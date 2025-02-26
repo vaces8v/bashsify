@@ -17,11 +17,10 @@ export default function AppLayout({
       <Header />
       <main className="flex relative justify-between pt-[60px] max-w-[1380px] w-full min-h-screen border-white/20 border-x-1.5 border-dashed">
         <Menu />
-        <div className="flex-1 max-w-[924px]">
+        <div className="flex-1 w-full max-w-[924px]">
           {children}
         </div>
-        <div className="w-[50px] h-[calc(100vh-60px)]">
-          3
+        <div className="w-[50px] md:block hidden h-[calc(100vh-60px)]">
         </div>
       </main>
     </div>

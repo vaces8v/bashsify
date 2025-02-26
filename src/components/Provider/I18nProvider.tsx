@@ -12,7 +12,8 @@ if (!i18n.isInitialized) {
     .init({
       resources: {
         en: {
-          translation: {  
+          translation: { 
+            "no_results": "No results found",
             "start_title": "Bash: Command shell",
             "start_introduction": "Bash (Bourne Again Shell) is a powerful command shell for Unix-like systems such as Linux and macOS. It allows you to interact with the operating system through the command line, automate tasks, and write scripts. In this article, we'll explain why you should learn Bash and what future it holds.",
             "what_is_bash_title": "What is Bash?",
@@ -187,7 +188,8 @@ if (!i18n.isInitialized) {
           }
         },
         ru: {
-          translation: {  
+          translation: {
+            "no_results": "Нечего не найдено",
             "start_title": "Bash: Командная оболочка",
             "start_introduction": "Bash (Bourne Again Shell) — это мощная командная оболочка для Unix-подобных систем, таких как Linux и macOS. Она позволяет взаимодействовать с операционной системой через командную строку, автоматизировать задачи и писать скрипты.",
             "what_is_bash_title": "Что такое Bash?",

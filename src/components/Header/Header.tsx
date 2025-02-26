@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { Languages, Menu, Rocket, Search } from "lucide-react"
 import { useRef, useState } from "react"
 import { Button } from "@heroui/button";
@@ -18,15 +18,39 @@ import { sections } from "../Menu/Menu";
 import { usePathname } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { useTranslation } from "react-i18next";
+import SearchResults, { searchIndex, SearchResult } from "../Search/SearchResults";
 
 
 export const Header = () => {
     const [title, setTitle] = useState<string>('')
     const [focusInput, setFocusInput] = useState<boolean>(false)
+    const [searchResults, setSearchResults] = useState<SearchResult[]>([])
     const refSearch = useRef<HTMLInputElement>(null)
     const pathname = usePathname();
     const { i18n } = useTranslation();
 
+    const handleSearch = (query: string) => {
+        setTitle(query);
+        if (query.trim() === '') {
+            setSearchResults([]);
+            return;
+        }
+
+        const results = searchIndex.filter(item => {
+            const searchQuery = query.toLowerCase();
+            return item.keywords.some(keyword => keyword.toLowerCase().includes(searchQuery)) ||
+                item.title.toLowerCase().includes(searchQuery) ||
+                item.description.toLowerCase().includes(searchQuery);
+        });
+
+        setSearchResults(results);
+    };
+
+    const clearSearch = () => {
+        setTitle('');
+        setSearchResults([]);
+        setFocusInput(false);
+    };
 
     return (
         <header className="fixed flex justify-center z-10 h-[60px] w-full border-white/20 border-b-1.5 border-dashed backdrop-blur-3xl">
@@ -38,62 +62,76 @@ export const Header = () => {
                     <h1 className="md:block hidden cursor-pointer text-white/40 font-poppins font-medium">Рекомендации</h1>
                     <h1 className="md:block hidden cursor-pointer text-white/40 font-poppins font-medium">Тесты</h1>
                 </div>
-                <div className="flex gap-3 ml-auto">
-                    <motion.div
-                        initial={{
-                            width: 150,
-                            borderRadius: 100
-                        }}
-                        animate={{
-                            width: focusInput || title.length ? 250 : 150,
-                            borderRadius: focusInput || title.length ? 10 : 100
-                        }}
-                        transition={{
-                            duration: .4,
-                        }}
-                        className="flex justify-center md:max-w-full max-w-[200px] items-center relative overflow-hidden w-full h-[35px]">
-                        <motion.input
+                <div className={clsx(`flex gap-3 ml-auto transition-all duration-300`, {
+                    ["translate-x-8"]: focusInput || title
+                })}>
+                    <div className="relative w-full max-w-[200px]">
+                        <motion.div
                             initial={{
-                                paddingLeft: '50px',
-                                width: "100%",
+                                width: 150,
+                                borderRadius: 100
                             }}
                             animate={{
-                                paddingLeft: focusInput || title.length ? '15px' : '50px',
-                                width: "100%"
+                                width: focusInput || title.length ? 250 : 150,
+                                borderRadius: focusInput || title.length ? 10 : 100
                             }}
-                            title={title}
-                            ref={refSearch}
-                            onFocus={() => setFocusInput(true)}
-                            onBlur={() => setFocusInput(false)}
-                            onChange={(e) => setTitle(e.target.value)}
-                            className="text-[16px] pl-[0px] pb-[0px] pr-[35px] text-[#ccc] placeholder:text-[#ccc] placeholder:font-medium focus:outline-none bg-primary backdrop-blur h-[50px] shadow-md"
-                            type="text" placeholder={focusInput ? "Пишите, что ищите" : "Поиск..."} />
-                        <motion.span
-                            initial={{
-                                opacity: 0,
-                                translateX: '10px',
+                            transition={{
+                                duration: .4,
                             }}
-                            animate={{
-                                opacity: focusInput || title.length ? 1 : 0,
-                                translateX: focusInput || title.length ? '0px' : '10px'
-                            }}
-                            className="absolute right-[10px] top-[8px]">
-                            <Search color="#ccc" size={20} />
-                        </motion.span>
-                        <motion.span
-                            onClick={() => refSearch.current?.focus()}
-                            initial={{
-                                opacity: 1,
-                                translateX: '0px'
-                            }}
-                            animate={{
-                                opacity: focusInput || title.length ? 0 : 1,
-                                translateX: focusInput || title.length ? '-40px' : '0px'
-                            }}
-                            className="absolute left-[10px] top-[8px] cursor-pointer">
-                            <Search color="#ccc" size={20} />
-                        </motion.span>
-                    </motion.div>
+                            className="flex justify-center md:max-w-full max-w-[200px] items-center relative z-50 overflow-hidden w-full h-[35px]">
+                            <motion.input
+                                initial={{
+                                    paddingLeft: '50px',
+                                    width: "100%",
+                                    borderRadius: 40
+                                }}
+                                animate={{
+                                    paddingLeft: focusInput || title.length ? '15px' : '50px',
+                                    width: "100%",
+                                    borderRadius: focusInput || title.length ? 10 : 40
+                                }}
+                                value={title}
+                                ref={refSearch}
+                                onFocus={() => setFocusInput(true)}
+                                onBlur={() => {
+                                    setTimeout(() => setFocusInput(false), 200);
+                                }}
+                                onChange={(e) => handleSearch(e.target.value)}
+                                className="text-[16px] pl-[0px] pb-[0px] pr-[35px] text-[#ccc] placeholder:text-[#ccc] placeholder:font-medium focus:outline-none bg-primary backdrop-blur h-[35px] shadow-md"
+                                type="text" placeholder={focusInput ? "Пишите, что ищите" : "Поиск..."} />
+                            <motion.span
+                                initial={{
+                                    opacity: 0,
+                                    translateX: '10px',
+                                }}
+                                animate={{
+                                    opacity: focusInput || title.length ? 1 : 0,
+                                    translateX: focusInput || title.length ? '0px' : '10px'
+                                }}
+                                onClick={clearSearch}
+                                className="absolute right-[10px] top-[8px] cursor-pointer">
+                                <Search color="#ccc" size={20} />
+                            </motion.span>
+                            <motion.span
+                                onClick={() => refSearch.current?.focus()}
+                                initial={{
+                                    opacity: 1,
+                                    translateX: '0px'
+                                }}
+                                animate={{
+                                    opacity: focusInput || title.length ? 0 : 1,
+                                    translateX: focusInput || title.length ? '-40px' : '0px'
+                                }}
+                                className="absolute left-[10px] top-[8px] cursor-pointer">
+                                <Search color="#ccc" size={20} />
+                            </motion.span>
+                        </motion.div>
+                        <AnimatePresence>
+                        {(title.length > 0) && (
+                            <SearchResults results={searchResults} onClose={clearSearch} />
+                        )}
+                        </AnimatePresence>
+                    </div>
                     <Drawer direction="right">
                         <DrawerTrigger asChild>
                             <Button className="md:hidden flex" size="sm" variant="light" isIconOnly>
@@ -147,13 +185,13 @@ export const Header = () => {
                         </DrawerContent>
                     </Drawer>
                     <Dropdown
-                     style={{
-                        borderRadius: '0.5rem',
-                        width: '140px',
-                        maxHeight: '200px',
-                      }}>
+                        style={{
+                            borderRadius: '0.5rem',
+                            width: '140px',
+                            maxHeight: '200px',
+                        }}>
                         <DropdownTrigger>
-                            <Button variant="light" size="sm" className="bg-primary" isIconOnly>
+                            <Button variant="light" size="sm" className={`bg-primary`} isIconOnly>
                                 <Languages size={20} color="white" />
                             </Button>
                         </DropdownTrigger>
