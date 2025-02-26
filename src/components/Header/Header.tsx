@@ -33,10 +33,10 @@ export const Header = () => {
             <nav className="flex items-center justify-between max-w-[1380px] w-full h-[60px] px-[20px] border-white/20 border-x-1.5 border-dashed">
                 <div className="flex flex-1 gap-3 w-full text-white/80 mt-1 items-center text-[14px] h-full">
                     <h1 className="text-white text-2xl mb-1">Bashify</h1>
-                    <h1 className="md:block hidden ml-1 cursor-pointer font-poppins font-medium">Документация</h1>
-                    <h1 className="md:block hidden cursor-pointer font-poppins font-medium">Блоги</h1>
-                    <h1 className="md:block hidden cursor-pointer font-poppins font-medium">Рекомендации</h1>
-                    <h1 className="md:block hidden cursor-pointer font-poppins font-medium">Тесты</h1>
+                    <Link href="/start" className="md:block hidden ml-1 cursor-pointer font-poppins font-medium">Документация</Link>
+                    <h1 className="md:block hidden cursor-pointer text-white/40 font-poppins font-medium">Блоги</h1>
+                    <h1 className="md:block hidden cursor-pointer text-white/40 font-poppins font-medium">Рекомендации</h1>
+                    <h1 className="md:block hidden cursor-pointer text-white/40 font-poppins font-medium">Тесты</h1>
                 </div>
                 <div className="flex gap-3 ml-auto">
                     <motion.div
