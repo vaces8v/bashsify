@@ -22,10 +22,11 @@ import SearchResults, { searchIndex, SearchResult } from "../Search/SearchResult
 
 
 export const Header = () => {
-    const [title, setTitle] = useState<string>('')
-    const [focusInput, setFocusInput] = useState<boolean>(false)
-    const [searchResults, setSearchResults] = useState<SearchResult[]>([])
-    const refSearch = useRef<HTMLInputElement>(null)
+    const [title, setTitle] = useState<string>('');
+    const [focusInput, setFocusInput] = useState<boolean>(false);
+    const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+    const refSearch = useRef<HTMLInputElement>(null);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const pathname = usePathname();
     const { i18n } = useTranslation();
 
@@ -62,8 +63,8 @@ export const Header = () => {
                     <h1 className="md:block hidden cursor-pointer text-white/40 font-poppins font-medium">Рекомендации</h1>
                     <h1 className="md:block hidden cursor-pointer text-white/40 font-poppins font-medium">Тесты</h1>
                 </div>
-                <div className={clsx(`flex gap-3 ml-auto transition-all duration-300`, {
-                    ["translate-x-8"]: focusInput || title
+                <div className={clsx(`flex gap-3 ml-auto transition-all duration-300 md:translate-x-0`, {
+                    ["translate-x-[10vw]"]: focusInput || title
                 })}>
                     <div className="relative w-full max-w-[200px]">
                         <motion.div
@@ -132,7 +133,7 @@ export const Header = () => {
                         )}
                         </AnimatePresence>
                     </div>
-                    <Drawer direction="right">
+                    <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen} direction="right">
                         <DrawerTrigger asChild>
                             <Button className="md:hidden flex" size="sm" variant="light" isIconOnly>
                                 <Menu size={20} color="white" />
@@ -168,6 +169,7 @@ export const Header = () => {
                                                             {/* Ссылка на тему */}
                                                             <Link
                                                                 href={topic.route}
+                                                                onClick={() => setIsDrawerOpen(false)}
                                                                 className={clsx("text-sm text-gray-300 hover:text-white transition-colors", {
                                                                     ["underline underline-offset-4"]: pathname === topic.route
                                                                 })}
@@ -195,7 +197,7 @@ export const Header = () => {
                                 <Languages size={20} color="white" />
                             </Button>
                         </DropdownTrigger>
-                        <DropdownMenu className="bg-primary rounded-lg w-[140px] overflow-hidden" aria-label="Language">
+                        <DropdownMenu className="bg-primary rounded-lg w-[150px] overflow-hidden" aria-label="Language">
                             <DropdownItem onPress={() => i18n.changeLanguage("ru")} key="ru" className="flex text-white ">
                                 <Icon icon="cif:ru" color="white" className="inline" />
                                 <p className="inline ml-3">{i18n.language === 'ru' ? 'Русский' : 'Russian'}</p>
