@@ -11,7 +11,7 @@ export default function Page() {
         <div className="flex flex-col items-center justify-center w-full h-full text-white">
             <p className="text-3xl">Статья еще не готова,</p>
             <p className="text-2xl">но она скоро будет доступна</p>
-            <Button onPress={() => router.back()} className="mt-3 text-[18px]" startContent={<IterationCcw size={18}  className="mt-1"/>}>Вернуться обратно</Button>
+            <Button onPress={() => router.back()} className="mt-3 text-[18px]" startContent={<IterationCcw size={18} className="mt-1"/>}>Вернуться обратно</Button>
         </div>
     )
 }
