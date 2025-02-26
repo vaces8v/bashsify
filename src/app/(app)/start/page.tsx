@@ -8,7 +8,7 @@ export default function Start() {
   const { t } = useTranslation();
 
   return (
-    <div className="flex text-white flex-col gap-[10px] md:max-w-[824px] md:min-w-[824px] min-w-full w-full h-full bg-black  p-6">
+    <div className="flex text-white flex-col gap-[10px] md:max-w-[824px] md:min-w-[824px] min-w-full w-full h-full bg-black p-6">
       {/* Заголовок */}
       <h1 className="mt-[30px] scroll-m-20 text-2xl font-bold tracking-tight lg:text-4xl">
         {t('start_title')}

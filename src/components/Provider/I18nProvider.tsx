@@ -32,7 +32,30 @@ if (!i18n.isInitialized) {
             "bash_example_description": "Here's an example of a simple Bash backup script:",
             "conclusion_title": "Conclusion",
             "conclusion_description": "Bash is a powerful and universal tool that has remained relevant for decades. Learning it not only simplifies working with Unix systems but also opens up new opportunities for automation and career growth. Even with the emergence of new technologies, Bash continues to be an important element of IT infrastructure.",
-            "conclusion_call_to_action": "If you want to become an IT professional, learning Bash is a great first step! :)"
+            "conclusion_call_to_action": "If you want to become an IT professional, learning Bash is a great first step! :)",
+            // History page translations
+            "history_title": "The History of Bash: A Journey Through Time",
+            "history_introduction": "The story of Bash (Bourne Again Shell) is deeply intertwined with the history of Unix and the free software movement. Let's explore how this revolutionary shell came to be and how it shaped modern computing.",
+            "early_unix_title": "The Early Unix Shell Era",
+            "early_unix_description": "The Unix shell story begins in 1971 with Thompson shell, created by Ken Thompson. This was followed by the Bourne shell (sh) in 1977, written by Stephen Bourne at Bell Labs, which introduced many of the basic shell concepts we still use today.",
+            "birth_of_bash_title": "The Birth of Bash",
+            "birth_of_bash_description": "In 1989, Brian Fox created Bash as part of the GNU Project, aiming to provide a free software replacement for the Bourne shell. The name 'Bash' is a play on words, meaning 'Bourne Again Shell', referencing both its predecessor and its rebirth as free software.",
+            "key_features_title": "Key Features and Innovations",
+            "key_feature_1": "Command line editing with history and tab completion",
+            "key_feature_2": "Job control and background process management",
+            "key_feature_3": "Shell functions and arrays",
+            "key_feature_4": "Customizable prompt and extensive scripting capabilities",
+            "evolution_title": "Evolution Timeline",
+            "evolution_1971": "Thompson shell (sh) created for Unix",
+            "evolution_1977": "Bourne shell released, introducing modern shell scripting",
+            "evolution_1989": "First version of Bash released by Brian Fox",
+            "evolution_1996": "Chet Ramey becomes primary maintainer",
+            "evolution_2004": "Bash 3.0 released with major improvements",
+            "evolution_2019": "Bash 5.0 introduces new features for modern computing",
+            "impact_title": "Impact on Modern Computing",
+            "impact_description": "Bash has become the de facto standard shell in the Linux world and plays a crucial role in modern DevOps practices, cloud computing, and system administration. Its influence can be seen in everything from simple scripts to complex deployment pipelines.",
+            "legacy_title": "Legacy and Future",
+            "legacy_description": "While newer shells like Zsh and Fish offer modern features, Bash's legacy is secured by its ubiquity, reliability, and continued development. It remains an essential tool in the Unix/Linux ecosystem and continues to evolve with the changing needs of the computing world."
           }
         },
         ru: {
@@ -56,7 +79,30 @@ if (!i18n.isInitialized) {
             "bash_example_description": "Вот пример простого Bash-скрипта для резервного копирования:",
             "conclusion_title": "Заключение",
             "conclusion_description": "Bash — это мощный и универсальный инструмент, который остаётся актуальным уже несколько десятилетий. Его изучение не только упрощает работу с Unix-системами, но и открывает новые возможности для автоматизации и карьерного роста. Даже с появлением новых технологий Bash продолжает оставаться важным элементом IT-инфраструктуры.",
-            "conclusion_call_to_action": "Если вы хотите стать профессионалом в IT, изучение Bash — это отличный первый шаг! :)"
+            "conclusion_call_to_action": "Если вы хотите стать профессионалом в IT, изучение Bash — это отличный первый шаг! :)",
+            // История Bash
+            "history_title": "История Bash: Путешествие во времени",
+            "history_introduction": "История Bash (Bourne Again Shell) тесно переплетена с историей Unix и движением свободного программного обеспечения. Давайте рассмотрим, как появилась эта революционная оболочка и как она повлияла на современные вычисления.",
+            "early_unix_title": "Эра ранних оболочек Unix",
+            "early_unix_description": "История оболочек Unix начинается в 1971 году с Thompson shell, созданной Кеном Томпсоном. За ней последовала оболочка Bourne shell (sh) в 1977 году, написанная Стивеном Борном в Bell Labs, которая ввела многие базовые концепции оболочки, используемые до сих пор.",
+            "birth_of_bash_title": "Рождение Bash",
+            "birth_of_bash_description": "В 1989 году Брайан Фокс создал Bash как часть проекта GNU, стремясь предоставить свободную замену оболочке Bourne shell. Название 'Bash' — это игра слов, означающая 'Bourne Again Shell', отсылающая как к предшественнику, так и к возрождению в качестве свободного программного обеспечения.",
+            "key_features_title": "Ключевые особенности и инновации",
+            "key_feature_1": "Редактирование командной строки с историей и автодополнением",
+            "key_feature_2": "Управление задачами и фоновыми процессами",
+            "key_feature_3": "Функции оболочки и массивы",
+            "key_feature_4": "Настраиваемое приглашение и расширенные возможности скриптинга",
+            "evolution_title": "Временная шкала развития",
+            "evolution_1971": "Создана Thompson shell (sh) для Unix",
+            "evolution_1977": "Выпущена Bourne shell, представившая современный скриптинг оболочки",
+            "evolution_1989": "Выпущена первая версия Bash Брайаном Фоксом",
+            "evolution_1996": "Чет Рэми становится основным разработчиком",
+            "evolution_2004": "Выпущен Bash 3.0 с major улучшениями",
+            "evolution_2019": "Bash 5.0 вводит новые функции для современных вычислений",
+            "impact_title": "Влияние на современные вычисления",
+            "impact_description": "Bash стал стандартной оболочкой в мире Linux и играет ключевую роль в современных практиках DevOps, облачных вычислениях и системном администрировании. Его влияние можно увидеть во всем: от простых скриптов до сложных процессов развертывания.",
+            "legacy_title": "Наследие и будущее",
+            "legacy_description": "Хотя более новые оболочки, такие как Zsh и Fish, предлагают современные функции, наследие Bash закреплено его повсеместным использованием, надежностью и постоянным развитием. Он остается важнейшим инструментом в экосистеме Unix/Linux и продолжает развиваться вместе с меняющимися потребностями мира вычислений."
           }
         }
       },
